@@ -1,0 +1,5 @@
+mapping_engine/proto/*.go
+mapping_language/parser/*.go
+/mapping_language/.antlr/antlr.jar
+/mapping_engine/main/main
+/.idea
