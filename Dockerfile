@@ -11,7 +11,7 @@ FROM ubuntu:22.04 as final
 
 WORKDIR /whistle-cli
 RUN apt-get update && \
-    apt-get install -y python3 curl rustc && \
+    apt-get install -y python3 curl && \
     rm -rf /var/lib/apt/lists/*
 RUN export POETRY_HOME=/whistle-cli; curl -sSL https://install.python-poetry.org | python3 -
 COPY --from=build /build/mapping_engine/main/main /usr/bin/whistle
