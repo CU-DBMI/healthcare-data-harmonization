@@ -10,7 +10,7 @@ class WhistleLauncher:
     output_dir_path: Path
     main_file_path: Path
     mapping_functions_dir_path: Path
-    mapping_concept_maps_dir_name: Path
+    mapping_concept_maps_dir_path: Path
     binary_name: str
 
     def convert(self):
@@ -29,6 +29,9 @@ class WhistleLauncher:
 
         if self.output_dir_path:
             args.extend(['-output_dir', self.output_dir_path])
+
+        if self.mapping_concept_maps_dir_path:
+            args.extend(['-harmonize_code_dir_spec', self.mapping_concept_maps_dir_path])
 
         print(f'Command: "{args}"')
         whistle = Popen(args,

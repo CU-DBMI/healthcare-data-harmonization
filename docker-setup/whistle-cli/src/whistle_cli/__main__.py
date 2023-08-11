@@ -26,7 +26,7 @@ def convert(
         output_dir_path=output_dir,
         main_file_path=main_file,
         mapping_functions_dir_path=mapping_functions,
-        mapping_concept_maps_dir_name=mapping_concept_maps,
+        mapping_concept_maps_dir_path=mapping_concept_maps,
         binary_name=binary_name,
     )
     whistle_launcher.convert()
