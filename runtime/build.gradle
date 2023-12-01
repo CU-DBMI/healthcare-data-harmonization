@@ -31,6 +31,9 @@ sourceSets {
      implementation group: 'javax.json', name: 'javax.json-api', version: '1.0'
      implementation group: 'joda-time', name: 'joda-time', version: '2.10.5'
 
+     // adding deps for fat jar
+    implementation 'com.google.flogger:google-extensions:0.7.1'
+
      testImplementation project(":testutil")
      testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version: '2.1'
      testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '2.1'
@@ -49,3 +52,13 @@ sourceSets {
          }
      }
  }
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': "${mainClassName}"
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveBaseName = "${rootProject.name}"
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
